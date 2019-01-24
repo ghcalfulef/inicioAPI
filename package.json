@@ -4,7 +4,8 @@
   "description": "configuracion basica para una api con nodejs",
   "main": "index.js",
   "scripts": {
-    "test": "test main.js"
+    "test": "test main.js",
+    "start": "nodemon main.js"
   },
   "keywords": [
     "nodejs",
