@@ -1,21 +1,16 @@
 let jwt = require('jsonwebtoken')
 let config = require('../config')
 
-// función de seguridad para ingresar a sitios con token
+// funciÃ³n de seguridad para ingresar a sitios con token
 exports.protegeRuta = function (req, res, next) {
 	let token = req.body.token || req.query.token || req.headers['x-api-key'];
 	if (token) {
-		jwt.verify(token, config.jwt_secreto, function (err, decoded) {
-			if (err) {
-				console.log(err);
-				return res.status(403).json({
-					"error": true
-				});
-			}
+		if (!validarToken(token)) {
+			formatoRespuesta(0, 403, [],'Token invalido', res)
+		} else {
 			req.decoded = decoded;
-			//TODO:console.log(decoded);
-			next(); //no error, proceed
-		});
+			next();
+		}
 	} else {
 		return res.status(403).send({
 			"error": true
