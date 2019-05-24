@@ -1,5 +1,5 @@
 let Seguridad = require('./SeguridadController')
-
+var retornaObjeto = x => ( Object.keys(x.params).length === 0 ? x.body : x.params)
 function ejecutaSP (nombre, params, res) {
 	try {
 		sp.exec(nombre, params).then(result=>{
