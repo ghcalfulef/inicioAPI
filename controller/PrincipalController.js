@@ -14,6 +14,4 @@ function ejecutaSP (nombre, params, res) {
 	}
 }
 
-exports.saludar = function () {
-	console.log("hola!");
-}
+exports.saludar = () =>	console.log("hola!")
